@@ -1,17 +1,18 @@
 <template>
-    <div>component-a</div>
+  <div>component-a</div>
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      title: 'Vue.js'
-    }
+      title: 'Vue.js',
+    };
   },
   methods: {
-    sayHello () {
-      window.alert('Hello');
-    }
-  }
-}
+    sayHello() {
+      console.log();
+      ('Hello');
+    },
+  },
+};
 </script>
