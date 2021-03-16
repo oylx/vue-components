@@ -1,11 +1,12 @@
 <template>
   <div>
+    <i-button></i-button>
     <i-button size="large">large</i-button>
     <i-button disabled>default</i-button>
     <i-button id="btn1" class="btn-submit">btn1</i-button>
     <i-button>
       <i-icon slot="icon" type="checkmark"></i-icon>
-      icon按钮
+      <span>icon按钮</span>
     </i-button>
     <div>
       <i-button @on-click="handleClick1">click1</i-button>

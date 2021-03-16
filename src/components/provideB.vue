@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ currName }}
+    {{ name }}
   </div>
 </template>
 <script>
@@ -8,13 +8,16 @@ export default {
   inject: ['name'],
   data() {
     return {
-      currName: '1234',
+      // name: '1234',
     };
   },
   mounted() {
-    setTimeout(() => {
-      this.currName = this.name;
-    }, 1000);
+    console.log(this.name);
+    // setTimeout(() => {
+    //   this.currName = this.name;
+    //   console.log(this.name);
+    // }, 1000);
+    
   },
 };
 </script>
