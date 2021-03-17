@@ -80,7 +80,7 @@ export const findComponentsDownward = (context, componentName) => {
  * @returns {Vue[]}
  */
 export const findBrothersComponents = (context, componentName, exceptMe = true) => {
-  let res = context.$parent.$children.filter(item => item.$options.name !== componentName)
+  let res = context.$parent.$children.filter(item => item.$options.name === componentName)
   let index = res.findIndex(item => item._uid = context._uid);
   if(exceptMe) res.splice(index, 1);
   return res;
