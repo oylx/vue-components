@@ -59,17 +59,31 @@ export const findComponentDownward = (context, componentName) => {
 
 /**
  * 由一个组件，向下找到所有指定的组件
+ * reduce 做累加器，并用递归将找到的组件合并为一个数组并返回
  * @param context
  * @param componentName
  * @returns {*[]}
  */
 export const findComponentsDownward = (context, componentName) => {
   return context.$children.reduce((components, child)=> {
-    if (child.$options.name === componentName) components.push(child)
-    const foundChildren = findComponentsDownward(child, componentName)
-    return components.concat(foundChildren)
-
+    if (child.$options.name === componentName) components.push(child);
+    const foundChildren = findComponentsDownward(child, componentName);
+    return components.concat(foundChildren);
   }, []);
+}
+
+/**
+ * 找到指定组件的兄弟组件
+ * @param context
+ * @param componentName
+ * @param exceptMe
+ * @returns {Vue[]}
+ */
+export const findBrothersComponents = (context, componentName, exceptMe = true) => {
+  let res = context.$parent.$children.filter(item => item.$options.name !== componentName)
+  let index = res.findIndex(item => item._uid = context._uid);
+  if(exceptMe) res.splice(index, 1);
+  return res;
 }
 
 

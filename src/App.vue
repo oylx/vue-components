@@ -12,6 +12,9 @@
           <li>
             <router-link to="/communicate">通信组件</router-link>
           </li>
+          <li>
+            <router-link to="/findcomponent">寻找组件</router-link>
+          </li>
         </ol>
       </aside>
       <main>

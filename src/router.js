@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home';
 import Communicate from './views/Communicate';
 import PropEventSlot from './views/PropEventSlot';
+import findComponent from './views/find-component.vue'
 
 Vue.use(Router);
 
@@ -25,6 +26,10 @@ const commonRoutes = [
     path: '/propeventslot',
     component: PropEventSlot,
   },
+  {
+    path: '/findcomponent',
+    component: findComponent
+  }
 ];
 
 router.addRoutes([...commonRoutes]);
