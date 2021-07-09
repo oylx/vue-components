@@ -10,8 +10,7 @@
 </template>
 <script>
 import componentB from './component-b.vue';
-import debounce from 'lodash.debounce';
-import throttle from 'lodash.throttle'
+import { debounce, throttle }  from 'lodash';
 import { findComponentDownward } from '@/utils/assist.js';
 
 export default {
