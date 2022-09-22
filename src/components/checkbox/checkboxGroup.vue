@@ -21,8 +21,7 @@ export default {
   data() {
     return {
       // 相当于created里this.currentValue = this.value,同时再watch
-      currentValue: this.value,
-      children: []
+      currentValue: this.value
     }
   },
   mounted () {
@@ -36,10 +35,10 @@ export default {
   },
   methods: {
     updateAllChildrenParentModel(update) {
-      this.children = findComponentsDownward(this, 'iCheckbox')
-      if (this.children) {
+      const children = findComponentsDownward(this, 'iCheckbox')
+      if (children) {
         const { value } = this
-        this.children.forEach(child => {
+        children.forEach(child => {
           child.parentModel = value
           if (update) {
             child.currentValue = value.indexOf(child.label) >= 0

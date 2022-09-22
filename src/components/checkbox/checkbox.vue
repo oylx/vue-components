@@ -2,7 +2,7 @@
   <label>
     <span>
       <input v-if="group" type="checkbox" :disabled="disabled" :value="label" v-model="parentModel" @change="change">
-      <input v-else  type="checkbox" :disabled="disabled" :checked="currentValue" @change="change">
+      <input v-else type="checkbox" :disabled="disabled" :checked="currentValue" @change="change">
     </span>
     <slot></slot>
   </label>
@@ -45,7 +45,6 @@ export default {
     // 是否更新当前model
     this.parent = findComponentUpward(this, 'iCheckboxGroup')
     this.group = !!this.parent
-    if (!this.group) this.updateCurrModel()
   },
   watch: {
     value(val) {
