@@ -1,30 +1,30 @@
 <template>
   <div>
-    <i-form :model="formValidate" :rules="ruleValidate">
+    <i-form :model="formData" :rules="rules">
       <i-form-item label="用户名" prop="name">
-        <i-input v-model="formValidate.name"></i-input>
+        <i-input v-model="formData.name"></i-input>
       </i-form-item>
       <i-form-item label="邮箱" prop="mail">
-        <i-input v-model="formValidate.mail"></i-input>
+        <i-input v-model="formData.mail"></i-input>
       </i-form-item>
     </i-form>
   </div>
 </template>
 <script>
-import iForm from '../components/form/form.vue';
-import iFormItem from '../components/form/form-item.vue';
-import iInput from '../components/input/input.vue';
+import iForm from '@/components/form/form.vue';
+import iFormItem from '@/components/form/form-item.vue';
+import iInput from '@/components/form/input.vue';
 
 export default {
   name: 'form-demo',
   components: { iForm, iFormItem, iInput },
   data () {
     return {
-      formValidate: {
+      formData: {
         name: '',
         mail: ''
       },
-      ruleValidate: {
+      rules: {
         name: [
           { required: true, message: '用户名不能为空', trigger: 'blur' }
         ],

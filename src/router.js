@@ -4,6 +4,7 @@ import Home from './views/Home';
 import Communicate from './views/Communicate';
 import PropEventSlot from './views/PropEventSlot';
 import findComponent from './views/find-component.vue'
+import checkbox from '@/views/checkbox'
 
 Vue.use(Router);
 
@@ -29,6 +30,10 @@ const commonRoutes = [
   {
     path: '/findcomponent',
     component: findComponent
+  },
+  {
+    path: '/checkbox',
+    component: checkbox
   }
 ];
 

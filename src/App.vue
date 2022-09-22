@@ -15,6 +15,9 @@
           <li>
             <router-link to="/findcomponent">寻找组件</router-link>
           </li>
+          <li>
+            <router-link to="/checkbox">多选框</router-link>
+          </li>
         </ol>
       </aside>
       <main>
