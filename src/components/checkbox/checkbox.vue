@@ -22,16 +22,19 @@ export default {
       type: Boolean,
       default: false
     },
+    // v-model传入，仅在checkbox用，checkbox-group不用
     value: {
       type: [String, Number, Boolean],
       default: false
     },
+    // checkbox-group中的checkbox使用
     label: {
       type: [ String, Number, Boolean ]
     }
   },
   data() {
     return {
+      // 相当于created里this.currentValue = this.value,同时再watch
       currentValue: this.value,
       group: false,
       parentModel: [],
@@ -39,10 +42,10 @@ export default {
     }
   },
   mounted() {
+    // 是否更新当前model
     this.parent = findComponentUpward(this, 'iCheckboxGroup')
     this.group = !!this.parent
-    if (this.group) this.parent.updateParentModel(true)
-    else this.updateCurrModel()
+    if (!this.group) this.updateCurrModel()
   },
   watch: {
     value(val) {
@@ -53,15 +56,12 @@ export default {
   methods: {
     change(event) {
       if (this.disabled) return
-      const checked = event.target.checked
-      this.currentValue = checked
-      const value = !!checked
+      const value = !!event.target.checked
+      this.currentValue = value
       this.$emit('input', value)
-      if (this.group) {
-        this.parent.changeParent(this.parentModel)
-      }
+      if (this.group) this.parent.changeParent(this.parentModel)
       else {
-        this.$emit('on-change', value)
+        this.$emit('inputChange', value)
         this.dispatch('iFormItem', 'on-form-change', value)
       }
     },

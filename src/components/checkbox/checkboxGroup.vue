@@ -12,6 +12,7 @@ export default {
   name: 'iCheckboxGroup',
   mixins: [Emitter],
   props: {
+    // v-model传入
     value: {
       type: Array,
       default: () => []
@@ -19,20 +20,22 @@ export default {
   },
   data() {
     return {
+      // 相当于created里this.currentValue = this.value,同时再watch
       currentValue: this.value,
       children: []
     }
   },
   mounted () {
-    this.updateParentModel(true);
+    this.updateAllChildrenParentModel(true);
   },
   watch: {
     value () {
-      this.updateParentModel(true);
+      console.log('接收到了')
+      this.updateAllChildrenParentModel(true);
     }
   },
   methods: {
-    updateParentModel(update) {
+    updateAllChildrenParentModel(update) {
       this.children = findComponentsDownward(this, 'iCheckbox')
       if (this.children) {
         const { value } = this
@@ -47,6 +50,7 @@ export default {
     },
     changeParent (data) {
       this.currentValue = data;
+      console.log('向上传递')
       this.$emit('input', data);
       this.$emit('on-change', data);
       this.dispatch('iFormItem', 'on-form-change', data);

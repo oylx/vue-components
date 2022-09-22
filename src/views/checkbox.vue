@@ -1,8 +1,8 @@
 <template>
   <div>
-    <i-checkbox v-model="single">单独选项</i-checkbox>
+    <i-checkbox v-model="single" @inputChange="handleSingleChange">单独选项</i-checkbox>
     <div>数据{{single}}</div>
-    <i-checkbox-group v-model="multiple">
+    <i-checkbox-group v-model="multiple" @change="handleMultipleChange">
       <i-checkbox v-for="(item, i) in checkboxGroupOptions" :key="i" v-bind="item">{{ item.name }}</i-checkbox>
     </i-checkbox-group>
     <div>数据{{multiple}}</div>
@@ -17,7 +17,7 @@ export default {
   components: { ICheckboxGroup, ICheckbox },
   data() {
     return {
-      single: false,
+      single: true,
       multiple: ['apple'],
       checkboxGroupOptions: [
         { label: 'apple', name: '苹果' },
@@ -25,6 +25,14 @@ export default {
         { label: 'peach', name: '桃子' },
         { label: 'purple', name: '葡萄' },
       ]
+    }
+  },
+  methods: {
+    handleSingleChange(val) {
+      console.log('接收', val)
+    },
+    handleMultipleChange(val) {
+      console.log('接收', val)
     }
   }
 }
