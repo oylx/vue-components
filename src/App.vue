@@ -3,20 +3,8 @@
     <div class="content">
       <aside>
         <ol>
-          <li>
-            <router-link to="/index">首页</router-link>
-          </li>
-          <li>
-            <router-link to="/propEventSlot">PropEventSlot</router-link>
-          </li>
-          <li>
-            <router-link to="/communicate">通信组件</router-link>
-          </li>
-          <li>
-            <router-link to="/findcomponent">寻找组件</router-link>
-          </li>
-          <li>
-            <router-link to="/checkbox">多选框</router-link>
+          <li v-for="(item, index) in routes" :key="item.path || index">
+            <router-link :to="item.path">{{item.name}}</router-link>
           </li>
         </ol>
       </aside>
@@ -28,8 +16,14 @@
 </template>
 
 <script>
+import { routes } from '@/router/routes'
 export default {
   name: 'App',
+  data() {
+    return {
+      routes
+    }
+  }
 };
 </script>
 
