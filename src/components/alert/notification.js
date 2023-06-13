@@ -1,4 +1,4 @@
-import Alert from './alert.vue'
+import Alert from './notification.vue'
 import Vue from 'vue'
 // 补充知识
 // vm.$mount( [elementOrSelector] )
@@ -45,21 +45,21 @@ Alert.newInstance = (properties) => {
   // $children[0]:div.alert
   // alert与component/Instance相比，多包含add/remove/notices/constructor属性
   const alert = Instance.$children[0]
-  let arr3 = [], arr1 = [], arr2 = []
-  for (let key1 in component) {
-    arr1.push(key1)
-  }
-  for (let key2 in Instance) {
-    arr2.push(key2)
-  }
-  for (let key3 in alert) {
-    arr3.push(key3)
-  }
-  arr3.forEach(v => {
-    if(!arr2.includes(v)) {
-      console.log(v)
-    }
-  })
+  // let arr3 = [], arr1 = [], arr2 = []
+  // for (let key1 in component) {
+  //   arr1.push(key1)
+  // }
+  // for (let key2 in Instance) {
+  //   arr2.push(key2)
+  // }
+  // for (let key3 in alert) {
+  //   arr3.push(key3)
+  // }
+  // arr3.forEach(v => {
+  //   if(!arr2.includes(v)) {
+  //     console.log(v)
+  //   }
+  // })
   return {
     add(noticeProps) {
       alert.add(noticeProps)
