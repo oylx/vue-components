@@ -1,14 +1,14 @@
 import Notification from './notification.js'
 
 let instance
-
-const getMessageInstance = () => {
+// 单例模式
+const getInstance = () => {
   instance = instance || Notification.newInstance()
   return instance
 }
 
 const notice = ({ duration = 1.5, content = '' }) => {
-  let instance = getMessageInstance()
+  let instance = getInstance()
   instance.add({ content, duration })
 }
 

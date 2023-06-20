@@ -66,6 +66,9 @@ export default {
     renderCode() {
       this.splitCode()
       if (this.html && this.js) {
+        // 参考   const func = new Function(a, b, 'return a+b');
+        // func(1, 2) 得到 3
+        // parseStrToFunc = { data:() => {}, template: 'xxx' }
         const parseStrToFunc = new Function(this.js)()
         parseStrToFunc.template = this.html
         const Component = Vue.extend(parseStrToFunc)
